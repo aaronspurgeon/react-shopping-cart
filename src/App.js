@@ -19,29 +19,20 @@ function App() {
 		setCart(item);
 	};
 
-	const ourContext = {
-		products,
-		cart,
-		setCart,
-		addItem
-	}
+	// const ourContext = {
+	// 	products,
+	// 	cart,
+	// 	setCart,
+	// 	addItem
+	// }
 
 	return (
-		<ProductContext.Provider value={ourContext}>
+		<ProductContext.Provider value={{ products, addItem }}>
 			<div className="App">
 				<Navigation cart={cart} />
 
 				{/* Routes */}
-				<Route
-					exact
-					path="/"
-					render={() => (
-						<Products
-							products={products}
-							addItem={addItem}
-						/>
-					)}
-				/>
+				<Route exact path="/" component={Products} />
 
 				<Route
 					path="/cart"
